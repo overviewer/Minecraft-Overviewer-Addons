@@ -42,9 +42,9 @@ While you have the index.html file open you'll also want to add this code anywhe
 Todo
 -------
 
-. better forecasting based on actual percents from the server.
-. detect day night in forecast.
-. show minutes as 2 digits
+- better forecasting based on actual percents from the server.
+- detect day night in forecast.
+- show minutes as 2 digits
 
 Support
 -------
