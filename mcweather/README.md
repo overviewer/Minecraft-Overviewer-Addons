@@ -9,7 +9,7 @@ Requirements
 -------
 
 * [Overviewer](https://github.com/brownan/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project I support
-* [PHP](http://php.net/) -- Your host/server must be able to parse the php language in order to support this script
+* [PHP 5.2+](http://php.net/) -- Your host/server must be able to parse the php language in order to support this script. More importantly you'll need php 5.2 or higher due to the use of the json functionality that was introduced in php5.2.
 * [nbt.class.php](http://svn.thefrozenfire.com/minecraft/NBT/trunk/) -- I've coded this script to use FrozenFire's nbt class. This can be placed in the same directory as your php 'include_path' on your host.
 
 Installation
@@ -45,6 +45,13 @@ Todo
 - better forecasting based on actual percents from the server.
 - detect day night in forecast.
 - show minutes as 2 digits
+
+Thanks
+-------
+
+- aheadley has provided huge support in deciphering the values stored in the level.dat nbt file.
+- Paul Davey for providing the use of his Buuf icons. http://mattahan.deviantart.com/art/Buuf-37966044
+- Frozenfire for developing easily the most widely used nbt library for manipulating the data in the Minecraft nbt files.
 
 Support
 -------
