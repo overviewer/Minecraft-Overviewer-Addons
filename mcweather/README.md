@@ -44,7 +44,6 @@ Todo
 
 - better forecasting based on actual percents from the server.
 - detect day night in forecast.
-- show minutes as 2 digits
 
 Thanks
 -------
