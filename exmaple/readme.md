@@ -3,7 +3,7 @@ Minecraft ExMaple!
 
 This is just an example map that shows nearly every combination of every block, plus a directional compass and some generated terrain with some typical architecture (the great wall of china). The intent of this map is not to be played, but to test the rendering capabilities of external programs, such as [Overviewer](https://github.com/brownan/Minecraft-Overviewer) 
 
-Download directly from: http://goo.gl/gREPR
+Download directly from: http://goo.gl/FMDjO
 Sample render of the map can be found at: http://minecraft.writhem.com/exmaple/
 
 Contents
