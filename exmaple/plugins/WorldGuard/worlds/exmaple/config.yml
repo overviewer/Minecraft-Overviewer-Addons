@@ -101,7 +101,7 @@ chest-protection:
     enable: off
 
 crops:
-    disable-creature-trampling: on
+    disable-creature-trampling: off
     disable-player-trampling: off
 
 blacklist:
