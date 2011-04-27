@@ -1,0 +1,85 @@
+#
+# This is the blacklist for WorldGuard. The blacklist allows you to perform
+# actions depending on an item or block ID. Comments start with # and they
+# are ignored so you can put your own notes.
+#
+# --------------------------------------------------------------------------
+#
+# WARNING:
+# Remember to check the compatibility spreadsheet for WorldGuard to see
+# if any events or actions are currently broken in your version of Bukkit.
+#
+# --------------------------------------------------------------------------
+#
+# Format:
+# [item1,item2]
+# option1=options
+# event1=whatToDo1,whatToDo2,whatToDo3
+# event2=whatToDo1,whatToDo2
+#
+# Example to block some ore mining and placement:
+# [coalore,goldore,ironore]
+# on-break=deny,log,kick
+# on-place=deny,tell
+#
+# Options:
+# - ignore-groups (comma-separated list of groups to not affect)
+# - comment (message for yourself that is printed with 'log' and 'notify')
+# - message (optional message to show the user instead; %s is the item name)
+#
+# Events:
+# - on-break (when a block of this type is about to be broken)
+# - on-destroy-with (the item/block held by the user while destroying)
+# - on-place (a block is being placed)
+# - on-use (an item like flint and steel or a bucket is being used)
+# - on-interact (when a block in used (doors, chests, etc.))
+# - on-drop (an item is being dropped from the player's inventory)
+# - on-acquire (an item enters a player's inventory via some method)
+#
+# Actions (for events):
+# - deny (deny completely, used blacklist mode)
+# - allow (used in whitelist mode)
+# - notify (notify admins)
+# - log (log to console/file/database)
+# - tell (tell a player that that's not allowed)
+# - kick (kick player)
+# - ban (ban player)
+#
+# Users with the /worldguardnotify permission will receive notifications.
+#
+# -------------
+#
+# You can have the same block or item used in two different sections and
+# they will both apply:
+#
+# [goldblock]
+# ignore-groups=vip
+# on-break=deny
+# [goldblock]
+# ignore-groups=admins
+# on-break=tell
+#
+# However, some events override others. For example, if you disable both
+# usage of the diamond pickaxe (with the on-destroy-with event) and
+# destruction of gold blocks (with the on-break event) and a player tries
+# to destroy a gold block with a diamond pickaxe, because the
+# on-destroy-with event comes first, the rules for the gold block
+# will not be applied (but the player will be denied nevertheless).
+#
+# --------------------------------------------------------------------------
+#
+# Some examples follow.
+#
+# REMEMBER: If a line has # in front, it will be ignored.
+#
+# --------------------------------------------------------------------------
+
+# Deny lava buckets
+#[lavabucket]
+#ignore-groups=admins,mods
+#on-use=deny,tell
+
+# Deny some ore
+#[coalore,goldore,ironore]
+#ignore-groups=admins,mods
+#on-break=notify,deny,log
