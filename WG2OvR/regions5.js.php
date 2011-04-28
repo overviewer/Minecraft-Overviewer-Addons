@@ -9,7 +9,7 @@
     $output = "// Exported from WorldGuard v5x Regions file\n";
     $output .= "// Coded by Michael Writhe - michael[at]writhem[dot]com\n";
     $output .= "// designed orignially for use on http://minecraft.writhem.com/\n";
-    $output .= "var regionData=[\n";
+    $output .= "overviewer.collections.regionDatas.push([\n";
     
     require_once "spyc.php"; // YAML Library.
     $data = spyc_load_file($yml); 
@@ -69,7 +69,7 @@
         if($debug) { print($name);print_r($region); }
     }	
   
-    $output .= "];";
+    $output .= "]);";
     
     print $output;
  

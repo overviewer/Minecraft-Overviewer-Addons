@@ -8,7 +8,7 @@
     $output = "// Exported from WorldGuard v4x Regions file\n";
     $output .= "// Coded by Michael Writhe - michael[at]writhem[dot]com\n";
     $output .= "// designed orignially for use on http://minecraft.writhem.com/\n";
-    $output .= "var regionData=[\n";
+    $output .= "overviewer.collections.regionDatas.push([\n";
     
     $debug = false;
     foreach ($txt as $line_num => $line) {
@@ -67,7 +67,7 @@
     }	
     
     
-    $output .= "];";
+    $output .= "]);";
     
     
     print $output;
