@@ -18,7 +18,7 @@ var forecast = '<img src="'+workingDIR+'/'+imgCurrent+'" height="30" width="30">
 var rainTime = 0;
 var thunderTime = 0;
 var gameTime = 0;
-
+            
 
 // sync with the actual clock from the server
 function mcw_sync() {
@@ -84,35 +84,50 @@ function mcw_sync() {
                 if (thunderTime >= rainTime) {
                     // 0% chance of storm, before stop rain
                     imgForecast = 'd_r0_l0.png';
-                    txtForecast = 'clear skies ('+Math.floor(rainTime)/60+':'+Math.floor(rainTime)%60+')';
+                    txtForecast = 'clear skies ('+strTime(rainTime)+')';
                 } else {
                     // 100% chance of storm before end of rain
                     imgForecast = 'd_r1_l1.png';
-                    txtForecast = '100% chance storm('+Math.floor(thunderTime/60)+':'+Math.floor(thunderTime%60)+')';
+                    txtForecast = '100% chance storm('+strTime(thunderTime)+')';
                 }
             } else {
                 // currently dry
                 if (thunderTime >= rainTime) {
                     // This can be expanded to provide something close to a % chance of thunder
-                    if (Math.abs(rainTime-thunderTime) < forecastAccuracy) {
+                    if (rainTime-thunderTime < forecastAccuracy) {
                        // reasonable chance of it thundering AND raining
                         imgForecast = 'd_r1_l1.png';
-                        txtForecast = '70% chance rain('+Math.floor(rainTime)+'sec) then storm('+Math.floor(thunderTime)+'sec)';
+                        txtForecast = '70% chance rain('+strTime(rainTime)+') then storm('+strTime(thunderTime)+')';
                     } else {
                         // Only rain
                         imgForecast = 'd_r2_l0.png';
-                        txtForecast = 'High chance rain('+Math.floor(rainTime)+'sec)';
+                        txtForecast = 'High chance rain('+strTime(rainTime)+')';
                     }
                 } else {
                     // Only rain
                     imgForecast = 'd_r2_l0.png';
-                    txtForecast = 'High chance rain ('+Math.floor(rainTime/60)+':'+Math.floor(rainTime%60)+')';
+                    txtForecast = 'High chance rain ('+strTime(rainTime)+')';
                 } 
             }
 
             forecast = '<img src="'+workingDIR+'/'+imgForecast+'" height="50" width="50"><br />'+txtForecast;
             $('#mcwforecast').html(forecast);
         });
+}
+
+function strTime(i) {
+    var s = '2:50';
+    var h; var m;
+    
+    h = Math.floor(i/60);
+    m = Math.floor(i%60);
+    
+    if (m<10) {
+        s = h + ':0' + m;
+    } else {
+        s = h + ':' + m;
+    }
+    return s;
 }
 
 function mcw_clock() {
@@ -142,13 +157,45 @@ function mcw_clock() {
     $('#mcwdebug').text("R: " + rainTime + " T: " + thunderTime + " G: " + gameTime );
 }
 
-function convertTime() {
-    return 
-}
-
 $(document).ready(
 	function() {
 		mcw_sync();
-		setInterval(mcw_sync, 1000*120); // will sync with the server every 2 minutes by default.
-		setInterval(mcw_clock, 1000); // update the internal clocks and debug info every 1 second.
+		setInterval(mcw_sync, 1000*30);
+		setInterval(mcw_clock, 1000);
+        
+        if ($('#mcw') && $('#plugins')) {
+            /* OLD FORMAT
+            <div style="position:absolute; bottom:35px; left:5px; width:140px; height:*;color:#FFFFFF;font-family:Arial;">
+                <div id="mcw" style="font-size:70%; position:relative; top:5px; opacity:0.9;">
+                    <span id="mcwcurrent"></span>
+                    <span id="mcw   forecast"></span>
+                </div>
+            </div>
+            */
+            var mcwStyleDiv = document.createElement("DIV");
+            mcwStyleDiv.style.position = 'absolute';
+            mcwStyleDiv.style.bottom = '35px';
+            mcwStyleDiv.style.left = '5px';
+            mcwStyleDiv.style.width = '140px';
+            mcwStyleDiv.style.color = '#FFFFFF';
+            mcwStyleDiv.style.fontFamily = "Arial,Sans-Serif";
+            mcwStyleDiv.style.fontSize = "11px";
+
+            var mcwDiv = document.createElement("DIV");
+            mcwDiv.id = "mcw";
+            mcwDiv.style = "font-size:70%; position:relative; top:5px; opacity:0.9;"
+
+            var mcwForecastDiv = document.createElement("SPAN");
+            mcwForecastDiv.id = "mcwcurrent";
+            mcwDiv.appendChild(mcwForecastDiv);
+
+            var mcwCurrentDiv = document.createElement("SPAN");
+            mcwCurrentDiv.id = "mcwforecast";
+            mcwDiv.appendChild(mcwCurrentDiv);
+
+            mcwStyleDiv.appendChild(mcwDiv);
+            $(mcwStyleDiv).appendTo('body');
+        }
+
+
 	});
