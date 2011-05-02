@@ -23,7 +23,7 @@ function preparePlayerMarker(marker,item) {
 	var c = "<div class=\"infoWindow\" style='width: 300px'><img src='http://cerato.writhem.com/player-avatar.php?player="+item.msg+"'/><h1>"+item.msg+"</h1></div>";
 	var infowindow = new google.maps.InfoWindow({content: c});
 	google.maps.event.addListener(marker, 'click', function() {
-		infowindow.open(map,marker);
+		infowindow.open(overviewer.map,marker);
 	});
 }
 
