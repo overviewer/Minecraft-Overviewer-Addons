@@ -197,5 +197,5 @@ $(document).ready(
             $(mcwStyleDiv).appendTo('body');
         }
 
-
+    overviewer.util.debug('[plugin] mcweather loaded');
 	});
