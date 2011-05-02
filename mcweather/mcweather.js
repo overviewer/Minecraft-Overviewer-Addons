@@ -4,16 +4,16 @@
 // http://mattahan.deviantart.com/art/Buuf-37966044
 
 var forecastAccuracy = 25000; // number of ticks to predict within. 20 ticks a second.
-var workingDIR = '/mcweather';  // default should work, unless you have something like example.com/~user/map/mcweather. NO TRAILING SLASH!
+var mcplworkingDIR = '/mcweather';  // default should work, unless you have something like example.com/~user/map/mcweather. NO TRAILING SLASH!
 
 // --END OF CONFIG--
 // just set some defaults while initalizing the variables.
 var day = true;
 var imgCurrent = 'd_r0_l0.png';
-var current = '<img src="'+workingDIR+'/'+imgCurrent+'" height="30" width="30">';
+var current = '<img src="'+mcplworkingDIR+'/'+imgCurrent+'" height="30" width="30">';
 var imgForecast = 'd_r0_l0.png';
 var txtForecast = 'Loading Forecast';
-var forecast = '<img src="'+workingDIR+'/'+imgCurrent+'" height="30" width="30">'+ txtForecast;
+var forecast = '<img src="'+mcplworkingDIR+'/'+imgCurrent+'" height="30" width="30">'+ txtForecast;
 
 var rainTime = 0;
 var thunderTime = 0;
@@ -22,7 +22,7 @@ var gameTime = 0;
 
 // sync with the actual clock from the server
 function mcw_sync() {
- 	$.getJSON(workingDIR+'/getServerWeather.php',
+ 	$.getJSON(mcplworkingDIR+'/getServerWeather.php',
 		function(data) {
             rainTime = data['rainTime'] /20;
             thunderTime = data['thunderTime'] /20;
@@ -75,7 +75,7 @@ function mcw_sync() {
                 }
 
             }
-            current = '<img src="'+workingDIR+'/'+imgCurrent+'" height="50" width="50">';
+            current = '<img src="'+mcplworkingDIR+'/'+imgCurrent+'" height="50" width="50">';
             $('#mcwcurrent').html(current);
 
             // forecast
@@ -110,7 +110,7 @@ function mcw_sync() {
                 } 
             }
 
-            forecast = '<img src="'+workingDIR+'/'+imgForecast+'" height="50" width="50"><br />'+txtForecast;
+            forecast = '<img src="'+mcplworkingDIR+'/'+imgForecast+'" height="50" width="50"><br />'+txtForecast;
             $('#mcwforecast').html(forecast);
         });
 }
