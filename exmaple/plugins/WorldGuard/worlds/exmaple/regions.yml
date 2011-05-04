@@ -16,3 +16,19 @@ regions:
     type: cuboid
     owners: {}
     members: {}
+  white-poly:
+    flags: {}
+    max-y: 70
+    priority: 0
+    points:
+    - {z: 93, x: -323}
+    - {z: 99, x: -320}
+    - {z: 93, x: -323}
+    - {z: 96, x: -323}
+    - {z: 96, x: -320}
+    - {z: 96, x: -323}
+    - {z: 99, x: -320}
+    type: poly2d
+    owners: {}
+    min-y: 64
+    members: {}
