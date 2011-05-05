@@ -1,12 +1,11 @@
 regions:
   red:
     min: {z: 91.0, y: 64.0, x: -317.0}
-    flags: {}
+    flags: {chest-access: deny}
     max: {z: 97.0, y: 70.0, x: -311.0}
     priority: 0
     type: cuboid
-    owners:
-      players: [box]
+    owners: {}
     members: {}
   blue:
     min: {z: 85.0, y: 64.0, x: -322.0}
@@ -18,16 +17,15 @@ regions:
     members: {}
   white-poly:
     flags: {}
-    max-y: 70
+    max-y: 67
     priority: 0
     points:
-    - {z: 93, x: -323}
+    - {z: 99, x: -326}
     - {z: 99, x: -320}
+    - {z: 93, x: -320}
     - {z: 93, x: -323}
     - {z: 96, x: -323}
-    - {z: 96, x: -320}
-    - {z: 96, x: -323}
-    - {z: 99, x: -320}
+    - {z: 96, x: -326}
     type: poly2d
     owners: {}
     min-y: 64
