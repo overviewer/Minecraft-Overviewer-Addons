@@ -7,7 +7,7 @@
     //Dragons below! Don't change below unless your name is Michael Writhe... :)
     $output = "// Exported from WorldGuard v4x Regions file\n";
     $output .= "// Coded by Michael Writhe - michael[at]writhem[dot]com\n";
-    $output .= "// designed orignially for use on http://minecraft.writhem.com/\n";
+    $output .= "// http://goo.gl/dc0tV\n";
     $output .= "overviewer.collections.regionDatas.push([\n";
     
     $debug = false;
@@ -66,9 +66,7 @@
         if($debug) { print_r($values); }
     }	
     
-    
     $output .= "]);";
-    
     
     print $output;
  
