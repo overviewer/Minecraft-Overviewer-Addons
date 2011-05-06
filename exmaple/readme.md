@@ -15,6 +15,15 @@ Contents
 - WorldGuard 5 regions file, with 2 regions of different sizes definned. (These are identified by the stone wireframe cubes in the map, the 2 points definned are the wool blocks on the corners)
 - MapMarkers typical markers.json file to indicate current player position for 1 player.
 
+Changing the map
+-------
+
+If you would like to add or alter this map in any way, please keep the following rules true:
+- 12 chunks x 10 chunks total size
+- 3 chunks x 3 chunks have been removed in the north west corner
+- remove any trees that may grow on the north border as a result of any rendering. Trees block the view of the blocks ... and that's bad!
+- player dat files must exist on the map, relocate them into the map region manually if necessary.
+
 Contributers
 -------
 
@@ -26,4 +35,5 @@ Contributers
 Version/Updates
 -------
 
+version 1.01 - Added polygon region
 version 1.0 - All blocks added as of minecraft 1.5_02 BETA
