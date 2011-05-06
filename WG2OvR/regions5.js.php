@@ -113,30 +113,32 @@
 
             if ($cube) { //------------------------------------
                 //array_push($faces,$face);
-                for ($n = 1; $n <= count($points["x"]);$n++) {
+                for ($n = 0; $n <= (count($points["x"])-1);$n++) {
                     /*
                         if you were to draw the L on its side and define the verticies as 0-5 then 
                       n = side number
                       s = verticies needed to make the side.
                         n   s1  s2
-                        1 | 0 | 5
-                        2 | 1 | 0
-                        3 | 2 | 1
-                        4 | 3 | 2
-                        5 | 4 | 3
-                        6 | 5 | 4
+                        0 | 0 | 5
+                        1 | 1 | 0
+                        2 | 2 | 1
+                        3 | 3 | 2
+                        4 | 4 | 3
+                        5 | 5 | 4
                     */
-                    $s1 = $n-1; $s2 = $n-2; if ($s2 < 0) { $s2 = count($points["x"])-1; }
+                    $s1 = $n; $s2 = $n-1; if ($s2 < 0) { $s2 = count($points["x"])-1; }
 
-                    $face["x"] = array($points["x"][$s1],$points["x"][$s1],$points["x"][$s1],$points["x"][$s1]);
-                    $face["y"] = array($miny,$miny,$maxy,$maxy);
-                    $face["z"] = array($points["z"][$s1],$points["z"][$s2],$points["z"][$s1],$points["z"][$s2]);
+                    $face["x"] = array($points["x"][$s1],$points["x"][$s1],$points["x"][$s2],$points["x"][$s2]);
+                    $face["y"] = array($maxy,$miny,$miny,$maxy);
+                    $face["z"] = array($points["z"][$s1],$points["z"][$s1],$points["z"][$s2],$points["z"][$s2]);
+ 
                     if (!isset($faces[0])) {
                         $faces[0] = $face;
                     } else {
                         array_push($faces, $face);
                     }
                     $face = null;
+                    
                 }
                 
                 if($debug) { print_r($faces); }
@@ -151,8 +153,8 @@
                     $o .= "     {\"x\": {$face["x"][2]}, \"y\": {$face["y"][2]}, \"z\": {$face["z"][2]}},\n";
                     $o .= "     {\"x\": {$face["x"][3]}, \"y\": {$face["y"][3]}, \"z\": {$face["z"][3]}}\n";
                     $o .= "   ]},\n";
-                }
                     $output .= $o;
+                }
                 
                 
                 $output = substr($output,0,-2);
