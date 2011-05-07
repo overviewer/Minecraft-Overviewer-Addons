@@ -1,6 +1,6 @@
 <?php 
     // OPTIONS HERE.... ooooOooo so many options it's overwhelming, how are you ever going to get through all of these!?
-    $yml = @'regions.yml'; 
+    $yml = @'<serverdir>\plugins\WorldGuard\worlds\<worldname>\regions.yml'; 
     $color_chestdeny = "#880000"; // what color should the region be when the flag chestaccess-deny is found?
     $color_normal = "#FFAA00"; // what color should normal regions be colored as?
     $debug = false; // will break overviewer, but show the contents of the arrays... debuging only.
@@ -131,12 +131,54 @@
                     $face["x"] = array($points["x"][$s1],$points["x"][$s1],$points["x"][$s2],$points["x"][$s2]);
                     $face["y"] = array($maxy,$miny,$miny,$maxy);
                     $face["z"] = array($points["z"][$s1],$points["z"][$s1],$points["z"][$s2],$points["z"][$s2]);
- 
-                    if (!isset($faces[0])) {
-                        $faces[0] = $face;
+                    
+                    // here comes the shit ton of crazy math.
+                    // to calculate the vector between two points A,B its:
+                    // BA = B - A = (Bx - Ax, By - Ay, Bz - Az)
+                    $a["x"] = $face["x"][0];
+                    $a["y"] = $face["y"][0];
+                    $a["z"] = $face["z"][0];
+                    
+                    $b["x"] = $face["x"][1];
+                    $b["y"] = $face["y"][1];
+                    $b["z"] = $face["z"][1];
+                    
+                    $c["x"] = $face["x"][3]; 
+                    $c["y"] = $face["y"][3];
+                    $c["z"] = $face["z"][3];
+                    
+                    $ba["x"] = $b["x"] - $a["x"];
+                    $ba["y"] = $b["y"] - $a["y"];
+                    $ba["z"] = $b["z"] - $a["z"];
+                    
+                    $ca["x"] = $c["x"] - $a["x"];
+                    $ca["y"] = $c["y"] - $a["y"];
+                    $ca["z"] = $c["z"] - $a["z"];
+                    
+                    $norm["x"] = round($ca["y"] * $ba["z"] - $ba["y"] * $ca["z"],0);
+                    $norm["y"] = round($ca["z"] * $ba["x"] - $ba["z"] * $ca["x"],0);
+                    $norm["z"] = round($ca["x"] * $ba["y"] - $ba["x"] * $ca["y"],0);
+                    
+                    if ($norm["x"] > 0 || $norm["z"] < 0) {
+                        // do nothing
                     } else {
-                        array_push($faces, $face);
+                        if (!isset($faces[0])) {
+                            $faces[0] = $face;
+                        } else {
+                            array_push($faces, $face);
+                        }
                     }
+                    if ($debug) { 
+                        print ("//debug: normal for point {$n} = ".$norm["x"] .",". $norm["y"].",".$norm["z"]."\n"); 
+                        $o = "   //rawr test\n";
+                        $o .= "   {\"label\": \"test-vector\", \"color\": \"#FF0000\", \"opacity\": 0.5, \"closed\": true, \"path\": [\n";
+                        $o .= "     {\"x\": {$points["x"][$s1]}, \"y\": {$maxy}, \"z\": {$points["z"][$s1]}},\n";
+                        $o .= "     {\"x\": ".($points["x"][$s1]+$norm["x"]).", \"y\": ".($maxy+$norm["y"]).", \"z\": ".($points["z"][$s1]+$norm["z"])."},\n";
+                        $o .= "   ]},\n";
+                        $output .= $o;
+                    }
+
+   
                     $face = null;
                     
                 }
@@ -146,6 +188,9 @@
                 
                 //generate faces
                 foreach ($faces as $facenum => $face) {
+
+                
+                
                     $o = "   //{$label}:face-{$facenum}\n";
                     $o .= "   {\"label\": \"{$label}-face-{$facenum}\", \"color\": \"{$color}\", \"opacity\": 0.5, \"closed\": true, \"path\": [\n";
                     $o .= "     {\"x\": {$face["x"][0]}, \"y\": {$face["y"][0]}, \"z\": {$face["z"][0]}},\n";
