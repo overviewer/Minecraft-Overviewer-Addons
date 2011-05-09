@@ -200,10 +200,6 @@
                     $o .= "   ]},\n";
                     $output .= $o;
                 }
-                
-                
-                $output = substr($output,0,-2);
-                $output .= "\n";
             }
         }
     }	
