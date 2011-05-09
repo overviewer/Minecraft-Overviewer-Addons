@@ -28,12 +28,13 @@ Contributers
 -------
 
 * pironic - Michael Writhe - michael [at] writhem [dot] com
-* Eminence32 - Andrew Chin - 
-* Fenixin - 
-* ramiel - A.Headley - 
+* Eminence32 - Andrew Chin
+* Fenixin - Alejandro Aguilera
+* ramiel - Alex Headley 
 
 Version/Updates
 -------
 
+version 1.02 - moved buttons, switches, added orientation for diodes.
 version 1.01 - Added polygon region
 version 1.0 - All blocks added as of minecraft 1.5_02 BETA

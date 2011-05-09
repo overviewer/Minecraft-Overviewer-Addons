@@ -1,11 +1,12 @@
 regions:
   red:
     min: {z: 91.0, y: 64.0, x: -317.0}
-    flags: {chest-access: deny}
+    flags: {}
     max: {z: 97.0, y: 70.0, x: -311.0}
     priority: 0
     type: cuboid
-    owners: {}
+    owners:
+      players: [box]
     members: {}
   blue:
     min: {z: 85.0, y: 64.0, x: -322.0}
