@@ -12,8 +12,23 @@
     
     $data = spyc_load_file($yml); 
     
-    $dr = new DetailedRegion();
-    #$r = new Region();
+    processMarkers($markersFile, $markers, $specialObjects);
     
-    print $dr->GetType();
+    function processMarkers($path, &$markers, &$specialObjects) {
+        $rawMarkers = file_get_contents($path);
+        $rawMarkerItems = explode("},", $rawMarkers);
+        
+        for($n = 1;$n < count($rawMarkerItems)-1;$n++) {
+            $json = json_decode($rawMarkerItems[$n] . "}");
+            printf("n : %d",$n);
+            print_r($json);
+        }
+        $lastItem = explode("]);",$rawMarkerItems[(count($rawMarkerItems)-1)]);
+        $json = json_decode($lastItem[0]);
+        print_r($json);
+
+            
+    }
+
+    
 ?>
