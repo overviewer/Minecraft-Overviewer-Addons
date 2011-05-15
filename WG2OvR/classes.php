@@ -91,37 +91,37 @@ class DetailedRegion extends Region
     public function Label($label=null) 
     {
         if ($label != null)
-            $this->__label = label;
+            $this->__label = $label;
         return $this->__label;
     }
     public function LabelColor($labelColor=null) 
     {
         if ($labelColor != null)
-            $this->__labelColor = labelColor;
+            $this->__labelColor = $labelColor;
         return $this->__labelColor;
     }
     public function RegionColor($regionColor=null) 
     {
         if ($regionColor != null)
-            $this->__regionColor = regionColor;
+            $this->__regionColor = $regionColor;
         return $this->__regionColor;
     }
     public function LineOpacity($lineOpacity=null) 
     {
         if ($lineOpacity != null)
-            $this->__lineOpacity = lineOpacity;
+            $this->__lineOpacity = $lineOpacity;
         return $this->__lineOpacity;
     }
     public function FillOpacity($fillOpacity=null) 
     {
         if ($fillOpacity != null)
-            $this->__fillOpacity = fillOpacity;
+            $this->__fillOpacity = $fillOpacity;
         return $this->__fillOpacity;
     }
     public function Closed($closed=null) 
     {
         if ($closed != null)
-            $this->__closed = closed;
+            $this->__closed = $closed;
         return $this->__closed;
     }
 
@@ -143,22 +143,22 @@ class DetailedRegion extends Region
 
 class Marker
 {
-    private $chunk;
-    private $msg;
-    private $type;
-    private $location;
+    private $__chunk;
+    private $__msg;
+    private $__type;
+    private $__location;
     
     ///TODO chunk
     public function Message($msg=null) 
     {
         if ($msg != null)
-            $this->__msg = msg;
+            $this->__msg = $msg;
         return $this->__msg;
     }
     public function Type($type=null) 
     {
         if ($type != null)
-            $this->__type = type;
+            $this->__type = $type;
         return $this->__type;
     }
     ///TODO location
