@@ -14,6 +14,12 @@
     
     processMarkers($markersFile, $markers, $specialObjects);
     
+    ///TODO - Process regions, check if region name exists in $markers, merge data and output accordingly
+    
+    /////////////////////////////////
+    // FUNCTIONS
+    /////////////////////////////////
+    
     function processMarkers($path, &$markers, &$specialObjects)
     {
         $rawMarkers = file_get_contents($path);
@@ -68,7 +74,19 @@
                 {
                     // This marker is a detailed region... carry on
                     
-                    ///TODO - Add to specialObjects
+                    if (isset($specialObjects[$so->Name()]))
+                    {
+                        // merge data
+                        if ($so->GetType() == "DetailedRegion")
+                        {
+                            $mergedDR = $so->Merge($specialObjects[$so->Name()]);
+                            $specialObjects[$so->Name()] = $mergedDR;
+                        }
+                    }
+                    else
+                    {
+                        $specialObjects[$so->Name()] = $so;
+                    }
                 }
             }
         }

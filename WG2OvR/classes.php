@@ -127,7 +127,7 @@ class DetailedRegion extends Region
 
     public function Merge(DetailedRegion $other)
     {
-        $dr = new DetailRegion();
+        $dr = new DetailedRegion();
         
         $dr->Label(($other->Label() != null) ? $other->Label() : $this->Label());
         $dr->LabelColor(($other->LabelColor() != null) ? $other->LabelColor() : $this->LabelColor());
