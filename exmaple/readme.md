@@ -35,6 +35,10 @@ Contributers
 Version/Updates
 -------
 
+version 1.03 - added a map_0.dat for 1.6 as well as all 1.6 blocks. Lots of tall grass this time.
+
 version 1.02 - moved buttons, switches, added orientation for diodes.
+
 version 1.01 - Added polygon region
+
 version 1.0 - All blocks added as of minecraft 1.5_02 BETA
