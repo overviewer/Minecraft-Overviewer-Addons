@@ -1,7 +1,8 @@
-var playerMarkers = null;
+var playerMarkers = [];
 var warpMarkers = [];
-var PlayerNames = null;
+var PlayerNames = [];
 var PlayerCount = 0;
+var oldPlayerData = false;
 var positionTop = '120px';
 var positionRight = '14px';
 var positionWidth = '150px';
@@ -13,8 +14,8 @@ function deletePlayerMarkers() {
     for (i in playerMarkers) {
       playerMarkers[i].setMap(null);
     }
-    playerMarkers = null;
-	PlayerNames = null;
+    playerMarkers = [];
+	PlayerNames = [];
 	PlayerCount = 0;
   }
 }
@@ -29,44 +30,65 @@ function preparePlayerMarker(marker,item) {
 
 function loadPlayerMarkers() {
     $.getJSON('markers.json', function(data) {
-        deletePlayerMarkers();
-        playerMarkers = [];
-		PlayerNames = [];
-		PlayerCount = 0;
-
+        if (!oldPlayerData)
+        {
+            deletePlayerMarkers();
+            playerMarkers = [];
+            PlayerNames = [];
+            PlayerCount = 0;
+        }
+       
+        var lookup = [];
         for (i in data) {
             var item = data[i];
-            var converted = overviewer.util.fromWorldToLatLng(item.x, item.y, item.z);
-			
-			var perPixel = 1.0 / (overviewerConfig.CONST.tileSize * Math.pow(2, overviewerConfig.map.maxZoom));
-
-			var lng = 0.5 - (1.0 / Math.pow(2, overviewerConfig.map.maxZoom + 1));
-			var lat = 0.5;
-					
-			lng += 12 * item.x * perPixel;
-			lat -= 6 * item.x * perPixel;
-					
-			lng += 12 * item.z * perPixel;
-			lat += 6 * item.z * perPixel;
-					
-			lat += 12 * (128 - item.y) * perPixel;
-
-			lng += 12 * perPixel;
-			lat += 18 * perPixel;
-			
-			PlayerNames.push('<!-- ' + item.msg.toLowerCase() + ' -->&nbsp;<a href="javascript:overviewer.map.panTo(overviewer.util.fromWorldToLatLng('+item.x+','+item.y+','+item.z+'));"><img src="http://cerato.writhem.com/player-avatar.php?player=' + item.msg + '&usage=list" border="0" /></a>&nbsp;' + item.msg + '<br /> ');
-			PlayerCount++;
+            lookup[item.msg] = item;
+        }            
+        var madechanges = false;
+        var toskip = [];
+        var newplayerMarkers = [];
+        // determine which markers can be kept
+        for (i in playerMarkers) {
+            var marker = playerMarkers[i];
+            var item = lookup[marker.getTitle()];
+            if (item == null) {
+                marker.setMap(null);
+                madechanges = true;
+            } else {
+                var converted = overviewer.util.fromWorldToLatLng(item.x, item.y, item.z);       
+                if (!marker.getPosition().equals(converted))
+                {   // we just need to move the marker
+                    marker.setPosition(converted);  
+                    marker.setMap(overviewer.map);                      
+                }
+                newplayerMarkers.push(marker);
+                toskip[marker.getTitle()] = true; 
+                madechanges = true;                
+            }
+        }
+        playerMarkers = newplayerMarkers;
+        // now add new items        
+        PlayerCount = 0;
+        PlayerNames = [];
+        for (i in data) {
+            var item = data[i];
+            var converted = overviewer.util.fromWorldToLatLng(item.x, item.y, item.z);         
+            if (!(item.msg in toskip))
+            {
+                madechanges = true;
+                var marker = new google.maps.Marker({
+                        position: converted,
+                        map: overviewer.map,
+                        title: item.msg,
+                        icon: 'http://cerato.writhem.com/player-avatar.php?player=' + item.msg + '&usage=marker'
+                });
+                playerMarkers.push(marker);
+                preparePlayerMarker(marker, item);
+            }
+            PlayerNames.push('<!-- ' + item.msg.toLowerCase() + ' -->&nbsp;<a href="javascript:overviewer.map.panTo(overviewer.util.fromWorldToLatLng('+item.x+','+item.y+','+item.z+'));"><img src="http://cerato.writhem.com/player-avatar.php?player=' + item.msg + '&usage=list" border="0" /></a>&nbsp;' + item.msg + '<br /> ');
+            PlayerCount++;
             
-			var marker = new google.maps.Marker({
-                    position: converted,
-                    map: overviewer.map,
-                    title: item.msg,
-                    icon: 'http://cerato.writhem.com/player-avatar.php?player=' + item.msg + '&usage=marker'
-            });
-			playerMarkers.push(marker);
-			preparePlayerMarker(marker, item);
          }
-		
+		      
 		$("#mcplOnline").empty();
 
         var mcplOutput = "loading";
