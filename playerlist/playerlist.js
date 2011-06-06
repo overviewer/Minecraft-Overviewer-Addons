@@ -2,7 +2,6 @@ var playerMarkers = [];
 var warpMarkers = [];
 var PlayerNames = [];
 var PlayerCount = 0;
-var oldPlayerData = false;
 var positionTop = '120px';
 var positionRight = '14px';
 var positionWidth = '150px';
@@ -29,15 +28,7 @@ function preparePlayerMarker(marker,item) {
 }
 
 function loadPlayerMarkers() {
-    $.getJSON('markers.json', function(data) {
-        if (!oldPlayerData)
-        {
-            deletePlayerMarkers();
-            playerMarkers = [];
-            PlayerNames = [];
-            PlayerCount = 0;
-        }
-       
+    $.getJSON('markers.json', function(data) {       
         var lookup = [];
         for (i in data) {
             var item = data[i];
