@@ -22,7 +22,7 @@ var gameTime = 0;
 
 // sync with the actual clock from the server
 function mcw_sync() {
- 	$.getJSON(mcwworkingDIR+'/getServerWeather.php',
+ 	$.getJSON('./json.php?q=weather',
 		function(data) {
             rainTime = data['rainTime'] /20;
             thunderTime = data['thunderTime'] /20;
@@ -159,43 +159,27 @@ function mcw_clock() {
 
 $(document).ready(
 	function() {
-		mcw_sync();
-		setInterval(mcw_sync, 1000*30);
-		setInterval(mcw_clock, 1000);
-        
-        if ($('#mcw') && $('#plugins')) {
-            /* OLD FORMAT
-            <div style="position:absolute; bottom:35px; left:5px; width:140px; height:*;color:#FFFFFF;font-family:Arial;">
-                <div id="mcw" style="font-size:70%; position:relative; top:5px; opacity:0.9;">
-                    <span id="mcwcurrent"></span>
-                    <span id="mcw   forecast"></span>
-                </div>
-            </div>
-            */
-            var mcwStyleDiv = document.createElement("DIV");
-            mcwStyleDiv.style.position = 'absolute';
-            mcwStyleDiv.style.bottom = '35px';
-            mcwStyleDiv.style.left = '5px';
-            mcwStyleDiv.style.width = '140px';
-            mcwStyleDiv.style.color = '#FFFFFF';
-            mcwStyleDiv.style.fontFamily = "Arial,Sans-Serif";
-            mcwStyleDiv.style.fontSize = "11px";
-
-            var mcwDiv = document.createElement("DIV");
-            mcwDiv.id = "mcw";
-            mcwDiv.style = "font-size:70%; position:relative; top:5px; opacity:0.9;"
-
-            var mcwForecastDiv = document.createElement("SPAN");
-            mcwForecastDiv.id = "mcwcurrent";
-            mcwDiv.appendChild(mcwForecastDiv);
-
-            var mcwCurrentDiv = document.createElement("SPAN");
-            mcwCurrentDiv.id = "mcwforecast";
-            mcwDiv.appendChild(mcwCurrentDiv);
-
-            mcwStyleDiv.appendChild(mcwDiv);
-            $(mcwStyleDiv).appendTo('body');
-        }
-
-        overviewer.util.debug('[plugin] mcweather loaded');
+        try {        
+            if ($('#mcw')) {
+            
+                var mcwStyleDiv = document.createElement("DIV");
+                mcwStyleDiv.innerHTML =
+                '<div style="position:absolute; bottom:35px; left:5px; width:140px; height:*;color:#FFFFFF;font-family:Arial;">'+
+                '    <div id="mcw" style="font-size:70%; position:relative; top:5px; opacity:0.9;">'+
+                '        <span id="mcwcurrent"></span>'+
+                '        <span id="mcwforecast"></span>'+
+                '    </div>'+
+                '</div>';
+                $(mcwStyleDiv).appendTo('body');        
+            }
+            
+            setInterval(mcw_sync, 1000*30);
+            setInterval(mcw_clock, 1000);        
+            
+            mcw_sync();
+            
+            overviewer.util.debug('[plugin] mcweather loaded');
+        } catch (e) {
+            overviewer.util.debug('[plugin] mcweather NOT loaded: '+e);
+        }        
 	});

@@ -1,0 +1,27 @@
+{
+    "name" : "Weather API methods",
+    "namespace" : "",
+    "depends" : [
+        "JSONAPI"
+    ],
+    "methods" : [
+        {
+			"name": "getWeatherDuration",
+			"desc": "Get the remaining time in ticks of the current conditions for a World.",
+			"returns": ["int", "Time in ticks"],
+			"call": "Server.getWorld(0).getWeatherDuration()"
+            "args": [
+                ["String", "World to operate on."]
+            ]
+        },
+        {
+			"name": "getThunderDuration",
+			"desc": "Get the thundering duration for a World.",
+			"returns": ["int", "Time in ticks"],
+			"call": "Server.getWorld(0).getThunderDuration()"
+            "args": [
+                ["String", "World to operate on."]
+            ]
+        },                        
+    ]
+}

@@ -1,4 +1,0 @@
-writeSpawn: false
-outputFile: Public/markers.json
-dateFormat: yyyyMMdd HH:mm:ss
-saveInterval: 1000

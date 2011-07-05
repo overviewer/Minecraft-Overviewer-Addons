@@ -10,15 +10,13 @@ Requirements
 
 * [Overviewer 0.1.3+](https://github.com/brownan/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project I support
 * [PHP 5.2+](http://php.net/) -- Your host/server must be able to parse the php language in order to support this script. More importantly you'll need php 5.2 or higher due to the use of the json functionality that was introduced in php5.2.
-* [nbt.class.php](http://svn.thefrozenfire.com/minecraft/NBT/trunk/) -- I've coded this script to use FrozenFire's nbt class. This can be placed in the same directory as your php 'include_path' on your host.
+* [JSONAPI] (https://github.com/alecgorge/jsonapi) - json-based interface permitting near calling of pre-defined near arbitary functions via the bukkit API.
 
 Installation
 -------
 
-1.) Edit the `getServerWeather.php` in a text editor:
-    
-    $nbt->loadFile("<serverDIR>/level.dat");
-    
+1.) Copy json/weather.json to <plugins>/JSONAPI/methods to add support for getting some weather stats by world.
+
 2.) Edit the `mcweather.js` in a text editor:
     
     var forecastAccuracy = 25000; // number of ticks to predict within. 20 ticks a second.
@@ -28,7 +26,7 @@ Installation
 
     <script type="text/javascript" src="mcweather/mcweather.js"></script>
 
-4.) Save all 3 files and copy all contents of the folder to your overviewer output folder or the `web_assets` folder of Overviewer.
+4.) Save both files and copy all contents of the folder to your overviewer output folder or the `web_assets` folder of Overviewer.
     
 Todo
 -------

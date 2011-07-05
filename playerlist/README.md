@@ -9,8 +9,7 @@ Requirements
 -------
 
 * [Overviewer 0.1.3+](https://github.com/brownan/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project I support
-* [MapMarkers bukkit plugin](http://tj09.net/minecraft/MapMarkers/) -- I have included TJ09's MapMarkers 0.3.2 (Mar-15-2011) with this build.
-* Any web host -- apparently loading the markers.json locally is not supported by the javascript json functions I utilize
+* [JSONAPI] (https://github.com/alecgorge/jsonapi) - json-based interface permitting near calling of pre-defined near arbitary functions via the bukkit API.
 
 Installation
 -------

@@ -9,13 +9,21 @@ Requirements
 -------
 
 * [Overviewer](https://github.com/brownan/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project we support
+* [JSONAPI] (https://github.com/alecgorge/jsonapi) - json-based interface permitting near calling of pre-defined near arbitary functions via the bukkit API. Supports a streaming API(chat,console output,player join/quite events) and http get API.
+
 
 Guidelines
 -------
 
 Please include installation instructions, requirements and any assumptions to end users in your readme when making addons.
+Edit json.config.php with the connection details for connecting to the bukkit plugin via http.
+Fetch the latest version of the php SDK from https://github.com/alecgorge/jsonapi/raw/master/sdk/php/JSONAPI.php
 
 Support
 -------
 
 Any inquires can be opened in the issues tab above, or join us on irc.freenode.net in [#overviewer](http://webchat.freenode.net?channels=overviewer)!
+
+
+
+
