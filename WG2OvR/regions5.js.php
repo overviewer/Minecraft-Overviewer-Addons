@@ -69,7 +69,7 @@
             }
             
             if($debug) { print($name);print_r($region); }
-        } else { 
+        }  elseif($region["type"] == "polygon") { 
             //polygon.
             $color = $color_normal;
             if(isset($region["flags"]["chest-access"])) {
