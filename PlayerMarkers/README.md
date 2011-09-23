@@ -8,7 +8,7 @@ This quick plugin will generate a player specific avatar and show that player's 
 Requirements
 -------
 
-* [Overviewer 0.1.3+](https://github.com/brownan/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project I support
+* [Overviewer 0.1.3+](https://github.com/overviewer/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project I support
 * [MapMarkers bukkit plugin](http://tj09.net/minecraft/MapMarkers/) -- I have included TJ09's MapMarkers 0.3.2 (Mar-15-2011) with this build.
 * Any web host -- apparently loading the markers.json locally is not supported by the javascript json functions I utilize
 
