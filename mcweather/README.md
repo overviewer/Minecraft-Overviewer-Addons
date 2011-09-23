@@ -8,7 +8,7 @@ This will generate 2 icons on your Overviewer map. The first is your current con
 Requirements
 -------
 
-* [Overviewer 0.1.3+](https://github.com/brownan/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project I support
+* [Overviewer 0.1.3+](https://github.com/overviewer/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project I support
 * [PHP 5.2+](http://php.net/) -- Your host/server must be able to parse the php language in order to support this script. More importantly you'll need php 5.2 or higher due to the use of the json functionality that was introduced in php5.2.
 * [nbt.class.php](http://svn.thefrozenfire.com/minecraft/NBT/trunk/) -- I've coded this script to use FrozenFire's nbt class. This can be placed in the same directory as your php 'include_path' on your host.
 

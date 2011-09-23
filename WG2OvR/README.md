@@ -11,7 +11,7 @@ Requirements
 
 * [WorldEdit](http://www.sk89q.com/projects/worldedit/) -- Required by WorldGuard
 * [WorldGuard](http://www.sk89q.com/projects/worldguard/) -- Define your regions with WorldGuard.
-* [Overviewer](https://github.com/brownan/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project I support
+* [Overviewer](https://github.com/overviewer/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project I support
 * [PHP](http://php.net/) -- Your host/server must be able to parse the php language in order to support this script
 * [spyc](http://code.google.com/p/spyc/) -- A Simple PHP YAML Class for reading WorldGuard version 5+ files. Comes included with this script (only required if you are using WG5).
 

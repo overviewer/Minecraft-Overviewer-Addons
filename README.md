@@ -8,7 +8,7 @@ Typically these addons are small in size but add additional functionality to the
 Requirements
 -------
 
-* [Overviewer](https://github.com/brownan/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project we support
+* [Overviewer](https://github.com/overviewer/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project, but brownan's is typically the main project we support
 
 Guidelines
 -------
