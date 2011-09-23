@@ -37,6 +37,8 @@ Contributers
 Version/Updates
 -------
 
+version 1.07 - pressure plates! nether stairs, nether wart.
+
 version 1.06 - updated for 1.9 tiles, regenerated the nether to include a nether fortress
 
 version 1.05 - Updated for 1.8 tiles
