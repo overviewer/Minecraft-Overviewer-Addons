@@ -37,7 +37,9 @@ Contributers
 Version/Updates
 -------
 
-version 1.07 - pressure plates! nether stairs, nether wart.
+version 1.08 - nether stairs, lilly pads, mycelium, block36, sapplings fixed, silverfish brick, stone bricks
+
+version 1.07 - pressure plates! nether wart.
 
 version 1.06 - updated for 1.9 tiles, regenerated the nether to include a nether fortress
 
