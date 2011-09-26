@@ -14,7 +14,7 @@ Contents
 - pre 1.8 Biome information as generated with [Biome Extractor Tool](http://www.minecraftforum.net/viewtopic.php?f=1022&t=80902)
 - WorldGuard 5 regions file, with 3 regions of different sizes definned. (These are identified by the stone wireframe cubes in the map, the points defined are the wool blocks on the corners)
 - MapMarkers typical markers.json file to indicate current player position for 1 player.
-- Minecraft 1.9 SMP Generated Nether files (temporarily the nether chunk can be seen 'next' to the normal chunk)
+- Minecraft 1.9 Beta SMP Generated Nether files (temporarily the nether chunk can be seen 'next' to the normal chunk)
 
 Changing the map
 -------
@@ -35,6 +35,8 @@ Contributers
 
 Version/Updates
 -------
+
+version 1.09 - fixed lilly pad examples, piston lighting issues, non-nether blocks in nether rendering.
 
 version 1.08 - nether stairs, lilly pads, mycelium, block36, sapplings fixed, silverfish brick, stone bricks
 
