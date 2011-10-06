@@ -36,6 +36,8 @@ Contributers
 Version/Updates
 -------
 
+version 1.10 - 1.9pre3 blocks: crystal, broken crystal, dreamportal surface ("ender goo"), enchanting table, cauldron, brewing stand 
+
 version 1.09 - fixed lilly pad examples, piston lighting issues, non-nether blocks in nether rendering.
 
 version 1.08 - nether stairs, lilly pads, mycelium, block36, sapplings fixed, silverfish brick, stone bricks
