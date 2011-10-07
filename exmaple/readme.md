@@ -3,7 +3,7 @@ Minecraft ExMaple!
 
 This is just an example map that shows nearly every combination of every block, plus a directional compass and some generated terrain with some typical architecture (the great wall of china). The intent of this map is not to be played, but to test the rendering capabilities of external programs, such as [Overviewer](https://github.com/overviewer/Minecraft-Overviewer) 
 
-Download directly from: http://goo.gl/FMDjO
+Download directly from: http://goo.gl/FE25Y
 Sample Overviewer render of the map can be found at: http://overviewer.org/example/
 
 Contents
@@ -14,8 +14,7 @@ Contents
 - pre 1.8 Biome information as generated with [Biome Extractor Tool](http://www.minecraftforum.net/viewtopic.php?f=1022&t=80902)
 - WorldGuard 5 regions file, with 3 regions of different sizes definned. (These are identified by the stone wireframe cubes in the map, the points defined are the wool blocks on the corners)
 - MapMarkers typical markers.json file to indicate current player position for 1 player.
-- Minecraft 1.9 SMP Generated Nether files (`exmaple_nether` needs to be moved 1 directory higher to be valid)
-- temporarily the nether chunk can be seen 'next' to the normal chunk
+- Minecraft 1.9 Beta SMP Generated Nether files (temporarily the nether chunk can be seen 'next' to the normal chunk)
 
 Changing the map
 -------
@@ -36,6 +35,10 @@ Contributers
 
 Version/Updates
 -------
+
+version 1.10 - 1.9pre3 blocks: crystal, broken crystal, dreamportal surface ("ender goo"), enchanting table, cauldron, brewing stand 
+
+version 1.09 - fixed lilly pad examples, piston lighting issues, non-nether blocks in nether rendering.
 
 version 1.08 - nether stairs, lilly pads, mycelium, block36, sapplings fixed, silverfish brick, stone bricks
 
