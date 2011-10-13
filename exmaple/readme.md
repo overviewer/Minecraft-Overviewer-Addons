@@ -14,7 +14,8 @@ Contents
 - pre 1.8 Biome information as generated with [Biome Extractor Tool](http://www.minecraftforum.net/viewtopic.php?f=1022&t=80902)
 - WorldGuard 5 regions file, with 3 regions of different sizes definned. (These are identified by the stone wireframe cubes in the map, the points defined are the wool blocks on the corners)
 - MapMarkers typical markers.json file to indicate current player position for 1 player.
-- Minecraft 1.9 Beta SMP Generated Nether files (temporarily the nether chunk can be seen 'next' to the normal chunk)
+- Minecraft 1.9 Beta SMP Generated Nether files located in the DIM-1 Folder(temporarily the nether chunk can be seen 'next' to the normal chunk)
+- Minecraft 1.9 Beta SMP Generated Ender files located in the DIM1 Folder
 
 Changing the map
 -------
@@ -35,6 +36,8 @@ Contributers
 
 Version/Updates
 -------
+
+version 1.11 - 1.9pre4 blocks: new bit values for portal frame, bit values for cauldron, bit values for brewing stand, brick slabs, new compass directions as east/north have changed.
 
 version 1.10 - 1.9pre3 blocks: crystal, broken crystal, dreamportal surface ("ender goo"), enchanting table, cauldron, brewing stand 
 
