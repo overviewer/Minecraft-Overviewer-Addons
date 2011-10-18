@@ -37,6 +37,8 @@ Contributers
 Version/Updates
 -------
 
+version 1.12 - corrected the compass, moved spawn to be in new north co-ordinate system, hopefully fixed some lighting issues on the pistons
+
 version 1.11 - 1.9pre4 blocks: new bit values for portal frame, bit values for cauldron, bit values for brewing stand, brick slabs, new compass directions as east/north have changed.
 
 version 1.10 - 1.9pre3 blocks: crystal, broken crystal, dreamportal surface ("ender goo"), enchanting table, cauldron, brewing stand 
