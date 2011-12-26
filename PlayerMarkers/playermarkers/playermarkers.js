@@ -66,7 +66,11 @@ function updatePlayerMarkers() {
 							break;
 						}
 					}
-					infoWindowsArray[i].open(overviewer.map, playerMarkers[i]);
+					if(infoWindowsArray[i].getMap()){
+						infoWindowsArray[i].close()
+					} else {
+						infoWindowsArray[i].open(overviewer.map, playerMarkers[i]);
+					}
 				});
 				infoWindowsArray.push(infowindow);
 				foundPlayerMarkers.push(true);
