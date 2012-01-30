@@ -37,6 +37,8 @@ Contributers
 Version/Updates
 -------
 
+version 1.21 - corrected additional lighting issues, removed null region. the only air that exists in the main region.
+
 version 1.2 - moved nether back to the nether folder, fixed some more lighting issues, inserted a few null chunks to avoid having to edit in MCEdit anymore (which is believed to be causing the lighting issues)
 
 version 1.12 - corrected the compass, moved spawn to be in new north co-ordinate system, hopefully fixed some lighting issues on the pistons
