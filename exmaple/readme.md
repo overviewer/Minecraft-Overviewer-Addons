@@ -37,6 +37,8 @@ Contributers
 Version/Updates
 -------
 
+version 1.3 - converted exmaple to anvil format, added new blocks (jungle tree, jungle sapling, redstone lamp), fixed lighting issues (it seems it is an in game issue) , removed null chunks (these gives problems at the moment, I guess it will be solved with new mcedit/minecraft), removed biomes folder.
+
 version 1.21 - corrected additional lighting issues, removed null region. the only air that exists in the main region.
 
 version 1.2 - moved nether back to the nether folder, fixed some more lighting issues, inserted a few null chunks to avoid having to edit in MCEdit anymore (which is believed to be causing the lighting issues)
