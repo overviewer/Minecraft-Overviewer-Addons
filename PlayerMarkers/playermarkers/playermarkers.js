@@ -10,7 +10,7 @@ var showPlayerMarkers   =   true; // Should we show the players moving around on
 var playerMarkers       =    []; //The array of player objects
 
 var showPlayerList      =   true; // Use the built in player list format and show it on right?
-var showPlayerWorld     =   true; // If true, will show the world the player is on in the playerList, if false will show the co-ordinate of the player.
+var showPlayerCoords     =   false; // If true, will show the ingame coordinates of the player.
 var playerListElement   =    '#player_list'; // default: #player_list. This option can be used to set a custom div format that has been inserted into the index page for player lists. If showPlayerList is true, this should be #player_list though.
 
 /**
@@ -203,8 +203,8 @@ function updatePlayer(name) {
     if (!player.visible) {
         player.infoWindow.close(); //close the InfoWindow (incase it was open at the time)
         $(player.listing).empty().append(player.name+' (hidden)'); //Empty the <li> and re-insert the player with (hidden) instead of the coordinates
-    } else if(showPlayerWorld) {
-        $(player.listing).empty().append(player.name+' ('+player.world+')'); //Empty the <li> and re-insert the player with their world.
+    } else if (showPlayerCoords) {
+        $(player.listing).empty().append(player.name+' ('+Math.round(player.x)+','+Math.round(player.y)+','+Math.round(player.z)+')'); //Empty the <li> and re-insert the player with their in-game coordinates (rounding for prettyness)
         if (showPlayerMarkers) { // only show the info window if the markers are enabled.
             /**
              *We re-bind the click event only if they are visible
@@ -215,7 +215,7 @@ function updatePlayer(name) {
             });
         }
     } else {
-        $(player.listing).empty().append(player.name+' ('+Math.round(player.x)+','+Math.round(player.y)+','+Math.round(player.z)+')'); //Empty the <li> and re-insert the player with their in-game coordinates (rounding for prettyness)
+        $(player.listing).empty().append(player.name); //Empty the <li> and re-insert the player
         if (showPlayerMarkers) { // only show the info window if the markers are enabled.
             /**
              *We re-bind the click event only if they are visible
