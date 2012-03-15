@@ -2,13 +2,13 @@
 // https://github.com/overviewer/Minecraft-Overviewer-Addons
 // Please make sure you have markers.json accessable to the web.
 
-console.log('MCO-ADDON: PlayerMarkers has been loaded');
-var playerListElement	=	'#player_list'; //The HTML element ID of the <ul> to display the player list
 var JSONFile			=	'markers.json'; //The JSON file containing the player data
 var refreshTime         =   5; //How many seconds should we wait between updating the JSONFile.
-var avatarserver        =   'http://new.overviewer.org/avatar/'; //The address for the player avatar script. 
+var avatarserver        =   'http://new.overviewer.org/avatar/head/'; //The address for the player avatar script. 
 var playerMarkers		=	[]; //The array of player objects
-
+var showPlayerList      =   true; // Use the built in player list format and show it on right?
+var showPlayerWorld     =   true; // If true, will show the world the player is on in the playerList, if false will show the co-ordinate of the player.
+var playerListElement	=	'#player_list'; // default: #player_list. This option can be used to set a custom div format that has been inserted into the index page for player lists. If showPlayerList is true, this should be #player_list though.
 
 /**
  * Create a new Player Marker
@@ -68,7 +68,7 @@ function createInfoWindowListener(marker,infoWindow){
  * @return	jQuery
  */
 function createPlayerListing(list,name){
-	$(list).append('<li id="li_'+name+'" style="background-image: url('+avatarserver+name+');">'+name+'(hidden)</li>');
+	$(list).append('<li id="li_'+name+'" style="background-image: url('+avatarserver+name+'); background-repeat: no-repeat; padding-left: 18px;fontcolor: white;">'+name+' (hidden)</li>');
 	return $('#li_'+name);
 }
 
@@ -86,7 +86,7 @@ function loadPlayers(){
 			for (var i in data) {
                 var curTileSet = overviewer.mapView.options.currentTileSet;
                 if (overviewerConfig.map.debug)
-                    console.log('Only showing players from world belonging to: ' + curTileSet.get("world").get("name"));
+                    //console.log('Updating ' +data[i].msg + ' from  ' + curTileSet.get("world").get("name"));
                 if(data[i].world != curTileSet.get("world").get("name")) continue;
 
                 var item			=	data[i];
@@ -127,7 +127,8 @@ function loadPlayers(){
                         y:			y, //The player's in-game Y coordinate
                         z:			z, //The player's in-game Z coordinate
                         icon:		icon, //The player's image icon
-                        visible:	visible //Is the player visible
+                        visible:	visible, //Is the player visible
+                        world:      world //The player's in-game world.
                     }
                 }
 				playerMarkers[name].location	=	location; //Update the player's location
@@ -179,6 +180,15 @@ function updatePlayer(name){
 	if(!player.visible){
 		player.infoWindow.close(); //close the InfoWindow (incase it was open at the time)
 		$(player.listing).empty().append(player.name+' (hidden)'); //Empty the <li> and re-insert the player with (hidden) instead of the coordinates
+    }else if(showPlayerWorld) {
+		$(player.listing).empty().append(player.name+' ('+player.world+')'); //Empty the <li> and re-insert the player with their world.
+		/**
+		 *We re-bind the click event only if they are visible
+		 *This prevents clicking on the <li> to get the player's last location and a pointless InfoWindow
+		 */
+		$(player.listing).click(function(){
+			player.infoWindow.open(overviewer.map,player.marker);
+		});
 	}else{
 		$(player.listing).empty().append(player.name+' ('+Math.round(player.x)+','+Math.round(player.y)+','+Math.round(player.z)+')'); //Empty the <li> and re-insert the player with their in-game coordinates (rounding for prettyness)
 		/**
@@ -229,3 +239,56 @@ function removePlayer(name){
 }
 
 setInterval(loadPlayers, 1000 * refreshTime);
+
+$(document).ready(function() {
+    if(showPlayerList) {
+        console.log("Adding PlayerList div");
+        /* OLD FORMAT
+        <div id="player_list" style="position:absolute; top:120px; right:14px; width:150px; height:*;border:solid;border-color:#FFFFFF;border-width:1px;color:#333;font-family:Arial;    background-color: rgba(255,255,255,0.55);">
+        <strong>
+        <div align="center" style="font-size:80%; position:relative; top:5px;">&nbsp;Online Players&nbsp;</div>
+        <hr style="color:#FFFFFF; background:#FFFFFF; heigth:1px;" />
+        <div style="font-size:80%; left:10px; bottom:10px; top:5px;" id="Players"></div>
+        </strong>
+        </div>
+        */
+        var pmStyleDiv = document.createElement("DIV");
+        pmStyleDiv.id = "player_list";
+        pmStyleDiv.style.position = 'absolute';
+        pmStyleDiv.style.top = '120px';
+        pmStyleDiv.style.right = '14px';
+        pmStyleDiv.style.width = '150px';
+        pmStyleDiv.style.border = 'solid white';
+        pmStyleDiv.style.borderwidth = '1px';
+        pmStyleDiv.style.color = 'white' //'#333333';
+        pmStyleDiv.style.fontFamily = "Arial,Sans-Serif";
+        pmStyleDiv.style.backgroundcolor = 'rgba(255,255,255,0.55)';
+
+        var pmStrongDiv = document.createElement("Strong");
+
+        var pmTitleDiv = document.createElement("DIV");
+        pmTitleDiv.align = 'center';
+        pmTitleDiv.style.fontsize = '80%';
+        pmTitleDiv.style.position = 'relative';
+        pmTitleDiv.style.top = '5px';
+        pmTitleDiv.innerHTML = "&nbsp;Online Players&nbsp;";
+        pmStrongDiv.appendChild(pmTitleDiv);
+        
+        var pmHRDiv = document.createElement("HR");
+        pmHRDiv.style.color = '#FFFFFF';
+        pmHRDiv.style.height = '1px';
+        pmStrongDiv.appendChild(pmHRDiv);
+
+        var pmPlayerDiv = document.createElement("DIV");
+        pmPlayerDiv.id = "Spieler";
+        pmPlayerDiv.style.fontsize = '80%';
+        pmPlayerDiv.style.left = '10px';
+        pmPlayerDiv.style.bottom = '10px';
+        pmPlayerDiv.style.top = '5px';
+        pmStrongDiv.appendChild(pmPlayerDiv);
+        
+        pmStyleDiv.appendChild(pmStrongDiv);
+        document.body.appendChild(pmStyleDiv);
+    }
+});
+console.log('MCO-ADDON: PlayerMarkers has been loaded');
