@@ -4,8 +4,11 @@
 
 var JSONFile			=	'markers.json'; //The JSON file containing the player data
 var refreshTime         =   5; //How many seconds should we wait between updating the JSONFile.
-var avatarserver        =   'http://new.overviewer.org/avatar/head/'; //The address for the player avatar script. 
+var avatarserver        =   'http://new.overviewer.org/avatar/'; //The address for the player avatar script. 
+
+var showPlayerMarkers   =   true; // Should we show the players moving around on the map?
 var playerMarkers		=	[]; //The array of player objects
+
 var showPlayerList      =   true; // Use the built in player list format and show it on right?
 var showPlayerWorld     =   true; // If true, will show the world the player is on in the playerList, if false will show the co-ordinate of the player.
 var playerListElement	=	'#player_list'; // default: #player_list. This option can be used to set a custom div format that has been inserted into the index page for player lists. If showPlayerList is true, this should be #player_list though.
@@ -26,7 +29,7 @@ function createPlayerMarker(location,map,name,icon,visible){
 		map: map,
 		title: name,
 		icon: icon,
-		visible: visible,
+		visible: (showPlayerMarkers ? visible : false),
 		zIndex: 999
 	});
 	return marker;
@@ -156,7 +159,7 @@ function updatePlayer(name){
 	var player	=	playerMarkers[name];
 
 	player.marker.setPosition(player.location); //Set the marker position on the map
-	player.marker.setVisible(player.visible); //Set the marker visibility on the map
+	player.marker.setVisible((showPlayerMarkers ? player.visible : false)); //Set the marker visibility on the map
 	player.infoWindow.setPosition(player.location); //Set the InfoWindow position on the map
 	player.listing.toggle(true); //Set the listing to visible (default)
 
@@ -240,6 +243,9 @@ function removePlayer(name){
 
 setInterval(loadPlayers, 1000 * refreshTime);
 
+/**
+ * Wait until the document is fully loaded, then add the PlayerList Div on the right, if enabled
+ */
 $(document).ready(function() {
     if(showPlayerList) {
         console.log("Adding PlayerList div");
