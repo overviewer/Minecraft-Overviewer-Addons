@@ -4,7 +4,7 @@
 
 var JSONFile			=	'markers.json'; //The JSON file containing the player data
 var refreshTime         =   5; //How many seconds should we wait between updating the JSONFile.
-var avatarserver        =   'http://new.overviewer.org/avatar/'; //The address for the player avatar script. 
+var avatarserver        =   'http://new.overviewer.org/avatar/<playername>/head'; //The address for the player avatar script. 
 
 var showPlayerMarkers   =   true; // Should we show the players moving around on the map?
 var playerMarkers		=	[]; //The array of player objects
@@ -23,18 +23,38 @@ var playerListElement	=	'#player_list'; // default: #player_list. This option ca
  * @param	visible		boolean				True if the marker should be displayed
  * @return	google.maps.Marker
  */
-function createPlayerMarker(location,map,name,icon,visible){
+function createPlayerMarker(location,map,name,icon,elevation,visible){
 	var marker =  new google.maps.Marker({
 		position: location,
 		map: map,
 		title: name,
-		icon: icon,
+		icon: createMarkerImage(elevation,icon),
 		visible: (showPlayerMarkers ? visible : false),
 		zIndex: 999
 	});
 	return marker;
 }
 
+/**
+ * Create a new MarkerImage, based on the elevation of the player. The Higher, the bigger.
+ *
+ * @param	elevation	int	The elevation (y) of the player ingame.
+ * @param	icon		string				The image icon of the player
+ * @return	google.maps.MarkerImage
+ */
+function createMarkerImage(elevation,icon){
+    // do a little error checking, make sure the player isn't flying into outerspace. if they are, render the size based as if they were at sky, not space.
+    if(elevation<0) elevation = 0;
+    if(elevation>256) elevation = 256;
+    var markerSize = Math.round(0.0859375 * elevation + 10); //http://goo.gl/sf94W thanks Wolfram|Alpha
+    //console.log(icon + " - " + elevation + " : " + markerSize); // debug only.
+    
+    var size = new google.maps.Size(markerSize,markerSize);
+	var markerImage =  new google.maps.MarkerImage(icon);
+    markerImage.size = size;
+    markerImage.scaledSize = size;
+	return markerImage;
+}
 
 /**
  *  Create a new Informational Window for a Player Marker
@@ -43,7 +63,7 @@ function createPlayerMarker(location,map,name,icon,visible){
  *  @return	goolge.maps.InfoWindow
  */
 function createInfoWindow(name){
-	var html = "<div class=\"infoWindow\" style='width: 300px'><img src='"+avatarserver+name+"'/><h1>"+name+"</h1></div>";
+	var html = "<div class=\"infoWindow\" style='width: 300px'><img src='"+getAvatarURL(name)+"'/><h1>"+name+"</h1></div>";
 	var infoWindow = new google.maps.InfoWindow({content: html});
 	return infoWindow;
 }
@@ -62,7 +82,6 @@ function createInfoWindowListener(marker,infoWindow){
 	return listener;
 }
 
-
 /**
  * Create a new Player Listing
  *
@@ -71,7 +90,7 @@ function createInfoWindowListener(marker,infoWindow){
  * @return	jQuery
  */
 function createPlayerListing(list,name){
-	$(list).append('<li id="li_'+name+'" style="background-image: url('+avatarserver+name+'); background-repeat: no-repeat; padding-left: 18px;fontcolor: white;">'+name+' (hidden)</li>');
+	$(list).append('<li id="li_'+name+'" style="background-image: url('+getAvatarURL(name)+'); background-repeat: no-repeat; padding-left: 18px;color: white;">'+name+' (hidden)</li>');
 	return $('#li_'+name);
 }
 
@@ -100,7 +119,7 @@ function loadPlayers(){
                 var z				=	item.z;
                 var display			=	item.display;
                 var timestamp		=	new Date(item.timestamp);
-                var icon			=	avatarserver+name;
+                var icon			=	getAvatarURL(name);
                 var location		=	overviewer.util.fromWorldToLatLng(x,y,z, curTileSet);
                 var visible			=	(display!="hidden");
 
@@ -108,7 +127,7 @@ function loadPlayers(){
                  * If we receive a player that is not in the list, it must be created
                  */
                 if(playerMarkers[name]==undefined){
-                    var marker		=	createPlayerMarker(location,overviewer.map,name,icon,visible); //create the marker
+                    var marker		=	createPlayerMarker(location,overviewer.map,name,icon,y,visible); //create the marker
                     var infoWindow	=	createInfoWindow(name); //create the info window
                     var listener	=	createInfoWindowListener(marker,infoWindow); //create the listener on the marker for the info window
                     var listing		=	createPlayerListing(playerListElement,name,icon); //create the player listing
@@ -148,7 +167,6 @@ function loadPlayers(){
 	});
 }
 
-
 /**
  * Update the player on the map
  *
@@ -160,6 +178,7 @@ function updatePlayer(name){
 
 	player.marker.setPosition(player.location); //Set the marker position on the map
 	player.marker.setVisible((showPlayerMarkers ? player.visible : false)); //Set the marker visibility on the map
+    player.marker.setIcon(createMarkerImage(player.y,player.icon)); //Set the icon again, with proper sizing
 	player.infoWindow.setPosition(player.location); //Set the InfoWindow position on the map
 	player.listing.toggle(true); //Set the listing to visible (default)
 
@@ -185,22 +204,26 @@ function updatePlayer(name){
 		$(player.listing).empty().append(player.name+' (hidden)'); //Empty the <li> and re-insert the player with (hidden) instead of the coordinates
     }else if(showPlayerWorld) {
 		$(player.listing).empty().append(player.name+' ('+player.world+')'); //Empty the <li> and re-insert the player with their world.
-		/**
-		 *We re-bind the click event only if they are visible
-		 *This prevents clicking on the <li> to get the player's last location and a pointless InfoWindow
-		 */
-		$(player.listing).click(function(){
-			player.infoWindow.open(overviewer.map,player.marker);
-		});
+        if(showPlayerMarkers) { // only show the info window if the markers are enabled.
+            /**
+             *We re-bind the click event only if they are visible
+             *This prevents clicking on the <li> to get the player's last location and a pointless InfoWindow
+             */
+            $(player.listing).click(function(){
+                player.infoWindow.open(overviewer.map,player.marker);
+            });
+        }
 	}else{
 		$(player.listing).empty().append(player.name+' ('+Math.round(player.x)+','+Math.round(player.y)+','+Math.round(player.z)+')'); //Empty the <li> and re-insert the player with their in-game coordinates (rounding for prettyness)
-		/**
-		 *We re-bind the click event only if they are visible
-		 *This prevents clicking on the <li> to get the player's last location and a pointless InfoWindow
-		 */
-		$(player.listing).click(function(){
-			player.infoWindow.open(overviewer.map,player.marker);
-		});
+        if(showPlayerMarkers) { // only show the info window if the markers are enabled.
+            /**
+             *We re-bind the click event only if they are visible
+             *This prevents clicking on the <li> to get the player's last location and a pointless InfoWindow
+             */
+            $(player.listing).click(function(){
+                player.infoWindow.open(overviewer.map,player.marker);
+            });
+        }
 	}
 }
 
@@ -239,6 +262,17 @@ function removePlayer(name){
 	player.marker.setMap(null); //Unlink the marker from the map
 	$(player.listing).toggle(false); //Hide the player listing in the <ul>
 	player.removed	=	true; //The player has been removed
+}
+
+/**
+ *  Will build a URL based on the player's name.
+ *
+ *  @param	name	string	The name of the player
+ *  @return	string
+ */
+function getAvatarURL(name){
+	var out = avatarserver.replace('<playername>',name);
+	return out;
 }
 
 setInterval(loadPlayers, 1000 * refreshTime);
