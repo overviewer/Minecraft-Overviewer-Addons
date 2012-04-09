@@ -10,7 +10,7 @@ Contents
 -------
 
 - 1 minecraft region stored in roughly 12x10 chunks, as generated on an SMP server. (time: morning, weather: clear) 
-- player.dat for 4 different players in different locations
+- player.dat for 5 different players in different locations
 - pre 1.8 Biome information as generated with [Biome Extractor Tool](http://www.minecraftforum.net/viewtopic.php?f=1022&t=80902)
 - WorldGuard 5 regions file, with 3 regions of different sizes definned. (These are identified by the stone wireframe cubes in the map, the points defined are the wool blocks on the corners)
 - MapMarkers typical markers.json file to indicate current player position for 1 player.
@@ -36,6 +36,8 @@ Contributers
 
 Version/Updates
 -------
+
+version 1.22 - added 1.25 blocks (3 new sandstone, redstone lamps, 3 new planks)
 
 version 1.21 - added 1.2 blocks (circle stone brick, upside down slabs and stairs), the null chunks doesn't work yet and there's a new lighting issue in Minecraft that makes some random shadows.
 
