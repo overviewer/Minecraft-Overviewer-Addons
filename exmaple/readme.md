@@ -37,15 +37,15 @@ Contributers
 Version/Updates
 -------
 
-version 1.22 - added 1.25 blocks (3 new sandstone, redstone lamps, 3 new planks)
+version 1.32 - added 1.2.5 blocks (3 new sandstone, redstone lamps, 3 new planks)
 
-version 1.21 - added 1.2 blocks (circle stone brick, upside down slabs and stairs), the null chunks doesn't work yet and there's a new lighting issue in Minecraft that makes some random shadows.
+version 1.31 - added 1.2 blocks (circle stone brick, upside down slabs and stairs), the null chunks doesn't work yet and there's a new lighting issue in Minecraft that makes some random shadows.
 
-version 1.3 - converted exmaple to anvil format, added new blocks (jungle tree, jungle sapling, redstone lamp), fixed lighting issues (it seems it is an in game issue) , removed null chunks (these gives problems at the moment, I guess it will be solved with new mcedit/minecraft), removed biomes folder.
+version 1.30 - converted exmaple to anvil format, added new blocks (jungle tree, jungle sapling, redstone lamp), fixed lighting issues (it seems it is an in game issue) , removed null chunks (these gives problems at the moment, I guess it will be solved with new mcedit/minecraft), removed biomes folder.
 
 version 1.21 - corrected additional lighting issues, removed null region. the only air that exists in the main region.
 
-version 1.2 - moved nether back to the nether folder, fixed some more lighting issues, inserted a few null chunks to avoid having to edit in MCEdit anymore (which is believed to be causing the lighting issues)
+version 1.20 - moved nether back to the nether folder, fixed some more lighting issues, inserted a few null chunks to avoid having to edit in MCEdit anymore (which is believed to be causing the lighting issues)
 
 version 1.12 - corrected the compass, moved spawn to be in new north co-ordinate system, hopefully fixed some lighting issues on the pistons
 
