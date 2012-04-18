@@ -9,13 +9,14 @@ Requirements
 -------
 
 * [Overviewer 0.9+](https://github.com/overviewer/Minecraft-Overviewer) -- Map generation in the format of google maps, can be most forks of this project
-* [MapMarkers bukkit plugin](http://tj09.net/minecraft/MapMarkers/) -- I have included TJ09's MapMarkers 0.3.4 (Mar-11-2012) with this build.
 * Any web host -- apparently loading the markers.json locally is not supported by the javascript json functions I utilize
+* [MapMarkers bukkit plugin](http://tj09.net/minecraft/MapMarkers/) -- I have included TJ09's MapMarkers 0.3.4 (Mar-11-2012) with this build. OR... 
+* [PlayerMarkers bukkit plugin](http://dev.bukkit.org/server-mods/mapmarkers/) -- You only need MapMarkers or PlayerMarkers. This one is by ICWiener42.
 
 Installation
 -------
 
-1.) Install the MapMarkers bukkit plugin into the plugins directory for your server. If you have obtained a newer version of this plugin directly from TJ09's website, you only need the MapMarker.jar file from his archive.
+1.) Install the MapMarkers bukkit plugin or the PlayerMarkers bukkit plugin into the plugins directory for your server. If you have obtained a newer version of this plugin directly from TJ09's website, you only need the MapMarker.jar file from his archive.
 
 2.) Configure MapMarker's `config.yml` to output the markers.json file into your overviewer web directory.
 	Alternatively don't edit config.yml, make a symlink (Linux only):
