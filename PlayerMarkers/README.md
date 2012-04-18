@@ -30,6 +30,20 @@ Installation
 
 5.) If you havn't already: Copy the plugins directory to the root of your bukkit enabled server directory.
 
+6.) Make sure the world in your overviewer config file is the same that will be output by the bukkit plugin. By default this is the world's folder name. You can check this by determining the world that is listed in the markers.json file after running your server with the bukkit file. Whatever world shows up in the markers.json is the name that must be definned in the config.py for Overviewer.
+
+`markers.json`
+
+    [{"timestamp":"20120418 01:42:27","id":4,"z":9,"msg":"pironic","y":64.0,"world":"1_2_vanilla","x":22},
+     {"timestamp":"20120418 21:45:39","id":4,"z":-201,"msg":"Notch","y":68.0,"world":"world","x":118}]
+
+`config.py`
+
+    worlds["1_2_vanilla"] = "/home/minecraft/1_2_vanilla"
+    worlds["world"] = "E:/cc"
+
+You can read more on this here: [http://dev.bukkit.org/.../world-name-mapping/](http://dev.bukkit.org/server-mods/mapmarkers/pages/world-name-mapping/)
+
 Sample
 -------
 
