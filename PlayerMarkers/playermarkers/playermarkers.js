@@ -111,6 +111,7 @@ function loadPlayers() {
                 if (overviewerConfig.map.debug)
                     //console.log('Updating ' +data[i].msg + ' from  ' + curTileSet.get("world").get("name"));
                 if (data[i].world != curTileSet.get("world").get("name")) continue;
+                if (data[i].id != 4) continue;
 
                 var item            =    data[i];
                 var name            =    item.msg;
