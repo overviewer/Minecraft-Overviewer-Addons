@@ -304,7 +304,7 @@ $(function() {
         pmStyleDiv.style.borderwidth        = '1px';
         pmStyleDiv.style.color              = 'white' //'#333333';
         pmStyleDiv.style.fontFamily         = "Arial,Sans-Serif";
-        pmStyleDiv.style.backgroundcolor    = 'rgba(255,255,255,0.55)';
+        pmStyleDiv.style.backgroundColor    = 'rgba(0,0,0,0.55)';
 
         var pmStrongDiv = document.createElement("Strong");
 
