@@ -334,4 +334,3 @@ $(function() {
     }
 });
 console.log('MCO-ADDON: PlayerMarkers has been loaded');
-v
