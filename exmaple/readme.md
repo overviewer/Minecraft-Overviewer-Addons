@@ -37,6 +37,8 @@ Contributers
 Version/Updates
 -------
 
+version 1.46 - fixed some minor lighting issues, actually added cocoa beans this time.
+
 version 1.45 - added more 1.2.6pre blocks (emerald, ender-chest, tripwire, rope, beans) and moved lots more blocks around to improve organization.
 
 version 1.40 - added 1.2.6pre blocks (wooden slabs), Moved lots of blocks around to increase organization, and reduce wasted space.
