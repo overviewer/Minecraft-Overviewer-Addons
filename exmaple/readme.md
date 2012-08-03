@@ -37,6 +37,8 @@ Contributers
 Version/Updates
 -------
 
+version 1.50 - added 1.3.1 blocks (sandstone stairs, directional logs). also fixed crops to prove they work... 
+
 version 1.46 - fixed some minor lighting issues, actually added cocoa beans this time.
 
 version 1.45 - added more 1.2.6pre blocks (emerald, ender-chest, tripwire, rope, beans) and moved lots more blocks around to improve organization.
