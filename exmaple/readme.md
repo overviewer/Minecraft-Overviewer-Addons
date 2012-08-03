@@ -37,6 +37,8 @@ Contributers
 Version/Updates
 -------
 
+version 1.52 - fixed some chest lighting issues.
+
 version 1.51 - added upsidedown sandstone stairs. whoops forgot that one.
 
 version 1.50 - added 1.3.1 blocks (sandstone stairs, directional logs). also fixed crops to prove they work... 
