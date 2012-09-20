@@ -37,6 +37,8 @@ Contributers
 Version/Updates
 -------
 
+version 1.53 - added 12w37a blcoks: all stair angles, cobblestone walls, mossy cobblestone walls, heads, all stairs in all new orientations, item frames, flower pot, beacon, trapdoor placement, dragon egg, command block.
+
 version 1.52 - fixed some chest lighting issues.
 
 version 1.51 - added upsidedown sandstone stairs. whoops forgot that one.
