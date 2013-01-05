@@ -37,6 +37,8 @@ Contributers
 Version/Updates
 -------
 
+version 1.55 - added 12w49a blocks: nether brick. 13w01a blocks: nether quartz ore, redsstone block, weighted pressure plate, trapped chests, hopper, daylight sensor block, and redstone comparator (capacitor).
+
 version 1.54 - added 12w41a blocks: 3 diff anvils' or diff quality/orientation.
 
 version 1.53 - added 12w37a blcoks: all stair angles, cobblestone walls, mossy cobblestone walls, heads, all stairs in all new orientations, item frames, flower pot, beacon, trapdoor placement, dragon egg, command block.
