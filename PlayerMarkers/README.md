@@ -45,6 +45,8 @@ Installation
 
 You can read more on this here: [http://dev.bukkit.org/.../world-name-mapping/](http://dev.bukkit.org/server-mods/mapmarkers/pages/world-name-mapping/)
 
+If you are having trouble with configuring this setting and are only running 1 world, you also have the option of changing filterPlayersByWorld in the playermarkers.js to false right near the top of the file. This will completely disable the filter by player's world and show every player on the current render (which is great, if you're only running one renderset)
+
 Sample
 -------
 

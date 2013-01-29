@@ -13,6 +13,8 @@ var showPlayerList      =   true; // Use the built in player list format and sho
 var showPlayerCoords     =   false; // If true, will show the ingame coordinates of the player.
 var playerListElement   =    '#player_list'; // default: #player_list. This option can be used to set a custom div format that has been inserted into the index page for player lists. If showPlayerList is true, this should be #player_list though.
 
+var filterPlayersByWorld =  true; // if this is false, it will show all players, regardless of the world they are in. This should not be true if you are running muli-verse. Set this to false if you are having trouble showing any players online and are only running 1 world. default = true;
+
 /**
  * Create a new Player Marker
  *
@@ -110,7 +112,7 @@ function loadPlayers() {
                 var curTileSet = overviewer.mapView.options.currentTileSet;
                 if (overviewerConfig.map.debug)
                     //console.log('Updating ' +data[i].msg + ' from  ' + curTileSet.get("world").get("name"));
-                if (data[i].world != curTileSet.get("world").get("name")) continue;
+                if (data[i].world != curTileSet.get("world").get("name") && filterPlayersByWorld) continue;
                 if (data[i].id != 4) continue;
 
                 var item            =    data[i];
