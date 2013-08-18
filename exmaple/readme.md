@@ -37,7 +37,9 @@ Contributers
 Version/Updates
 -------
 
-version 1.55 - added 12w49a blocks: nether brick. 13w01a blocks: nether quartz ore, redsstone block, weighted pressure plate, trapped chests, hopper, daylight sensor block, and redstone comparator (capacitor).
+version 1.56 - added some 1.6.2 blocks: quartz blocks, stained clay, hay block, carpets, hardened clay and block of coal.
+
+version 1.55 - added 12w49a blocks: nether brick. 13w01a blocks: nether quartz ore, redstone block, weighted pressure plate, trapped chests, hopper, daylight sensor block, and redstone comparator (capacitor).
 
 version 1.54 - added 12w41a blocks: 3 diff anvils' or diff quality/orientation.
 
