@@ -33,9 +33,12 @@ Contributers
 * Eminence32 - Andrew Chin
 * Fenixin - Alejandro Aguilera
 * ramiel - Alex Headley 
+* m0r13 - Moritz Hilscher
 
 Version/Updates
 -------
+
+version 1.57 - added 1.7 blocks: new flowers, new wood/slabs/stairs/saplings/leaves/trees (dark oak, acacia), stained glass, stained glass panes, podzol, red sand.
 
 version 1.56 - added some 1.6.2 blocks: quartz blocks, stained clay, hay block, carpets, hardened clay and block of coal.
 
