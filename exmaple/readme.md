@@ -22,8 +22,9 @@ Changing the map
 
 If you would like to add or alter this map in any way, please keep the following rules true:
 
-- 12 chunks x 10 chunks total size
-- remove any trees that may grow on the north border as a result of any rendering. Trees block the view of the blocks ... and that's bad!
+- 12 chunks x 10 chunks total size, you can run the ``crop_exmaple.py`` python script to crop the ExMaple ([pymclevel](https://github.com/mcedit/pymclevel) required).
+- Don't forget to remove generated water/lava sources flowing from other chunks to the ExMaple ([example how it shouldn't look like](http://i.imgur.com/6qsnMIG.png)).
+- Remove any trees that may grow on the north border as a result of any rendering. Trees block the view of the blocks ... and that's bad!
 - player dat files must exist on the map, relocate them into the map region manually if necessary.
 
 Contributers
